@@ -100,12 +100,7 @@ python -m jcvi.graphics.karyotype pangolin_seqids layout_pangolins --notex --fig
 while read x y; do echo ${x}; python Assembly/MuntjacAnalysis/mcscan_invert_chr.py PhaTri1.bed_${x} phatri1.renamed.fa.fai ${y} > PhaTri1.bed_${y}; done < phatri1.key
 
 ## create then same formatted two-column text file as before
-cp ManJav1.ManPen1.simple ManJav1.ManPen1.simple_highlight-${x}
-read while x y z
-do
-echo "Highlighting ${x}"
-sed "s/^${x}_/${y}*${x}_/g' ManJav1.ManPen1.simple_highlight-${x} > ManJav1.ManPen1.simple_highlight-${y}
-done < color.key
+cp ManJav1.ManPen1.simple ManJav1.ManPen1.simple_highlight-${x}; read while x y z; do; echo "Highlighting ${x}"; sed "s/^${x}_/${y}*${x}_/g' ManJav1.ManPen1.simple_highlight-${x} > ManJav1.ManPen1.simple_highlight-${y}; done < color.key
 
 # generate finalized synteny plot
 python -m jcvi.graphics.karyotype pangolin_seqids layout_pangolins --notex --figsize=13x11 --dpi=600 --format=pdf -o Pangolin_karyotype.pdf
