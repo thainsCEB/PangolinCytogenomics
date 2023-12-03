@@ -97,10 +97,7 @@ python -m jcvi.graphics.karyotype pangolin_seqids layout_pangolins --notex --fig
 # X	olive
 
 ## for inverting chromosomes create a two-column text file with  "original" in the first row and then going down a list of the chromosomes that are being inverted. In the second column, start value in the first row and proceed downwards. At the end put "final".
-while read x y \n
-do echo ${x} \n 
-python Assembly/MuntjacAnalysis/mcscan_invert_chr.py PhaTri1.bed_${x} phatri1.renamed.fa.fai ${y} > PhaTri1.bed_${y} \n
-done < phatri1.key
+while read x y; do echo ${x}; python Assembly/MuntjacAnalysis/mcscan_invert_chr.py PhaTri1.bed_${x} phatri1.renamed.fa.fai ${y} > PhaTri1.bed_${y}; done < phatri1.key
 
 ## create then same formatted two-column text file as before
 cp ManJav1.ManPen1.simple ManJav1.ManPen1.simple_highlight-${x}
